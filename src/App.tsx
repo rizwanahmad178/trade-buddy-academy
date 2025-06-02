@@ -12,6 +12,9 @@ import StudentDashboard from "./pages/StudentDashboard";
 import MentorDashboard from "./pages/MentorDashboard";
 import FAQ from "./pages/FAQ";
 import Checkout from "./pages/Checkout";
+import Referral from "./pages/Referral";
+import Community from "./pages/Community";
+import TradingJournal from "./pages/TradingJournal";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +34,9 @@ const App = () => (
           <Route path="/mentor-dashboard" element={<MentorDashboard />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/referral" element={<Referral />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/trading-journal" element={<TradingJournal />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
