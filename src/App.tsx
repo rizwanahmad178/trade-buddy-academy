@@ -10,6 +10,8 @@ import TraderProfile from "./pages/TraderProfile";
 import CourseDetails from "./pages/CourseDetails";
 import StudentDashboard from "./pages/StudentDashboard";
 import MentorDashboard from "./pages/MentorDashboard";
+import FAQ from "./pages/FAQ";
+import Checkout from "./pages/Checkout";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +29,8 @@ const App = () => (
           <Route path="/course/:courseId" element={<CourseDetails />} />
           <Route path="/student-dashboard" element={<StudentDashboard />} />
           <Route path="/mentor-dashboard" element={<MentorDashboard />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/checkout" element={<Checkout />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
