@@ -9,11 +9,13 @@ import { Separator } from "@/components/ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useSearchParams } from "react-router-dom";
+import CourseChat from "@/components/CourseChat";
 
 const Checkout = () => {
   const [searchParams] = useSearchParams();
-  const courseTitle = searchParams.get('course') || 'Selected Course';
+  const courseTitle = searchParams.get('course') || 'Complete Options Trading Mastery';
   const price = searchParams.get('price') || '₹12,999';
+  const mentorName = searchParams.get('mentor') || 'Rajesh Kumar';
   
   const [step, setStep] = useState<'signup' | 'payment'>('signup');
   const [signupMethod, setSignupMethod] = useState<'email' | 'phone'>('email');
@@ -44,8 +46,8 @@ const Checkout = () => {
     return (
       <div className="min-h-screen bg-gray-50">
         <Navigation />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid md:grid-cols-2 gap-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {/* Order Summary */}
             <Card>
               <CardHeader>
@@ -161,6 +163,11 @@ const Checkout = () => {
                 </form>
               </CardContent>
             </Card>
+
+            {/* Course Chat */}
+            <div>
+              <CourseChat mentorName={mentorName} courseTitle={courseTitle} />
+            </div>
           </div>
         </div>
       </div>
