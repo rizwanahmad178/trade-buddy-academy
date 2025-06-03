@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,14 +12,16 @@ export const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-blue-900">TradeMentor</h1>
+            <Link to="/" className="text-2xl font-bold text-blue-900">TradeMentor</Link>
           </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Courses</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Mentors</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">How it Works</a>
+            <Link to="/explore" className="text-gray-700 hover:text-blue-600 transition-colors">Explore</Link>
+            <Link to="/community" className="text-gray-700 hover:text-blue-600 transition-colors">Community</Link>
+            <Link to="/trading-journal" className="text-gray-700 hover:text-blue-600 transition-colors">Journal</Link>
+            <Link to="/referral" className="text-gray-700 hover:text-blue-600 transition-colors">Referral</Link>
+            <Link to="/faq" className="text-gray-700 hover:text-blue-600 transition-colors">FAQ</Link>
             <Button variant="outline" className="mr-2">Login</Button>
             <Button className="bg-blue-600 hover:bg-blue-700">Get Started</Button>
           </div>
@@ -39,9 +42,11 @@ export const Navigation = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <a href="#" className="text-gray-700 hover:text-blue-600">Courses</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600">Mentors</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600">How it Works</a>
+              <Link to="/explore" className="text-gray-700 hover:text-blue-600">Explore</Link>
+              <Link to="/community" className="text-gray-700 hover:text-blue-600">Community</Link>
+              <Link to="/trading-journal" className="text-gray-700 hover:text-blue-600">Journal</Link>
+              <Link to="/referral" className="text-gray-700 hover:text-blue-600">Referral</Link>
+              <Link to="/faq" className="text-gray-700 hover:text-blue-600">FAQ</Link>
               <div className="flex flex-col space-y-2 pt-4">
                 <Button variant="outline">Login</Button>
                 <Button className="bg-blue-600 hover:bg-blue-700">Get Started</Button>
