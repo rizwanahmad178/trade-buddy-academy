@@ -1,11 +1,15 @@
-
 import { Navigation } from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, DollarSign, Users, MessageSquare, Clock, TrendingUp } from "lucide-react";
+import { StudentProgressModal } from "@/components/StudentProgressModal";
+import { useState } from "react";
 
 const MentorDashboard = () => {
+  const [selectedStudent, setSelectedStudent] = useState<any>(null);
+  const [isProgressModalOpen, setIsProgressModalOpen] = useState(false);
+
   const upcomingSessions = [
     {
       id: 1,
@@ -60,6 +64,11 @@ const MentorDashboard = () => {
     thisMonthEarnings: "₹45,000",
     completedSessions: 23,
     averageRating: 4.9
+  };
+
+  const handleViewProgress = (student: any) => {
+    setSelectedStudent(student);
+    setIsProgressModalOpen(true);
   };
 
   return (
@@ -201,7 +210,7 @@ const MentorDashboard = () => {
                           <MessageSquare className="w-4 h-4 mr-2" />
                           Message
                         </Button>
-                        <Button size="sm" variant="outline">
+                        <Button size="sm" variant="outline" onClick={() => handleViewProgress(student)}>
                           View Progress
                         </Button>
                       </div>
@@ -262,6 +271,12 @@ const MentorDashboard = () => {
           </div>
         </div>
       </div>
+
+      <StudentProgressModal
+        student={selectedStudent}
+        isOpen={isProgressModalOpen}
+        onClose={() => setIsProgressModalOpen(false)}
+      />
     </div>
   );
 };
