@@ -3,9 +3,16 @@ import { Navigation } from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, MessageSquare, BookOpen, Play } from "lucide-react";
+import { Calendar, Clock, MessageSquare, BookOpen, Play, FileText } from "lucide-react";
+import { BatchChatModal } from "@/components/BatchChatModal";
+import { PrivateJournalModal } from "@/components/PrivateJournalModal";
+import { useState } from "react";
 
 const StudentDashboard = () => {
+  const [selectedBatch, setSelectedBatch] = useState<any>(null);
+  const [isBatchChatOpen, setIsBatchChatOpen] = useState(false);
+  const [isPrivateJournalOpen, setIsPrivateJournalOpen] = useState(false);
+
   const upcomingClasses = [
     {
       id: 1,
@@ -51,19 +58,30 @@ const StudentDashboard = () => {
   const activeChats = [
     {
       id: 1,
-      name: "Options Trading Group",
+      name: "Options Trading Mastery - Batch A",
       lastMessage: "Rajesh: Great question about volatility...",
       unreadCount: 3,
-      time: "2 min ago"
+      time: "2 min ago",
+      students: 25
     },
     {
       id: 2,
-      name: "Technical Analysis Group",
+      name: "Technical Analysis - Batch B",
       lastMessage: "Priya: Market update for tomorrow...",
       unreadCount: 1,
-      time: "1 hour ago"
+      time: "1 hour ago",
+      students: 18
     }
   ];
+
+  const handleOpenBatchChat = (chat: any) => {
+    setSelectedBatch(chat);
+    setIsBatchChatOpen(true);
+  };
+
+  const handleOpenPrivateJournal = () => {
+    setIsPrivateJournalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -175,6 +193,14 @@ const StudentDashboard = () => {
                     <Calendar className="w-4 h-4 mr-2" />
                     Book 1:1 Session
                   </Button>
+                  <Button 
+                    className="w-full justify-start" 
+                    variant="outline"
+                    onClick={handleOpenPrivateJournal}
+                  >
+                    <FileText className="w-4 h-4 mr-2" />
+                    Private Journal
+                  </Button>
                   <Button className="w-full justify-start" variant="outline">
                     <MessageSquare className="w-4 h-4 mr-2" />
                     Contact Support
@@ -188,13 +214,17 @@ const StudentDashboard = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MessageSquare className="w-5 h-5" />
-                  Group Chats
+                  Batch Chats
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   {activeChats.map((chat) => (
-                    <div key={chat.id} className="p-3 border border-gray-200 rounded-lg hover:border-blue-300 transition-colors cursor-pointer">
+                    <div 
+                      key={chat.id} 
+                      className="p-3 border border-gray-200 rounded-lg hover:border-blue-300 transition-colors cursor-pointer"
+                      onClick={() => handleOpenBatchChat(chat)}
+                    >
                       <div className="flex justify-between items-start mb-1">
                         <h4 className="font-medium text-gray-900 text-sm">{chat.name}</h4>
                         {chat.unreadCount > 0 && (
@@ -204,7 +234,10 @@ const StudentDashboard = () => {
                         )}
                       </div>
                       <p className="text-xs text-gray-600 mb-1">{chat.lastMessage}</p>
-                      <span className="text-xs text-gray-400">{chat.time}</span>
+                      <div className="flex justify-between items-center">
+                        <span className="text-xs text-gray-400">{chat.time}</span>
+                        <span className="text-xs text-gray-500">{chat.students} students</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -213,6 +246,18 @@ const StudentDashboard = () => {
           </div>
         </div>
       </div>
+
+      <BatchChatModal
+        isOpen={isBatchChatOpen}
+        onClose={() => setIsBatchChatOpen(false)}
+        batchName={selectedBatch?.name || ""}
+        studentCount={selectedBatch?.students || 0}
+      />
+
+      <PrivateJournalModal
+        isOpen={isPrivateJournalOpen}
+        onClose={() => setIsPrivateJournalOpen(false)}
+      />
     </div>
   );
 };
