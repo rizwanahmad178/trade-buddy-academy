@@ -5,12 +5,10 @@ import { NavigationCards } from "@/components/NavigationCards";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navigation />
-      <div className="bg-gradient-to-b from-blue-50 to-white">
-        <Hero />
-        <NavigationCards />
-      </div>
+      <Hero />
+      <NavigationCards />
     </div>
   );
 };

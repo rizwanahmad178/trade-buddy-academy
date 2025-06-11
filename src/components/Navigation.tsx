@@ -12,7 +12,7 @@ export const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-blue-600">TradeMentor</Link>
+            <Link to="/" className="text-2xl font-bold text-blue-900">TradeMentor</Link>
           </div>
           
           {/* Desktop Navigation */}
@@ -23,7 +23,7 @@ export const Navigation = () => {
             <Link to="/referral" className="text-gray-700 hover:text-blue-600 transition-colors">Referral</Link>
             <Link to="/faq" className="text-gray-700 hover:text-blue-600 transition-colors">FAQ</Link>
             <Button variant="outline" className="mr-2">Login</Button>
-            <Button>Get Started</Button>
+            <Button className="bg-blue-600 hover:bg-blue-700">Get Started</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -49,7 +49,7 @@ export const Navigation = () => {
               <Link to="/faq" className="text-gray-700 hover:text-blue-600">FAQ</Link>
               <div className="flex flex-col space-y-2 pt-4">
                 <Button variant="outline">Login</Button>
-                <Button>Get Started</Button>
+                <Button className="bg-blue-600 hover:bg-blue-700">Get Started</Button>
               </div>
             </div>
           </div>

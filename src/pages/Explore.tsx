@@ -185,13 +185,13 @@ const Explore = () => {
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <Badge variant="secondary">{article.category}</Badge>
-                  <span className="text-sm text-muted-foreground">{article.readTime}</span>
+                  <span className="text-sm text-gray-500">{article.readTime}</span>
                 </div>
                 <CardTitle className="text-xl">{article.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">{article.excerpt}</p>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <p className="text-gray-600 mb-4">{article.excerpt}</p>
+                <div className="flex items-center gap-4 text-sm text-gray-500">
                   <div className="flex items-center gap-1">
                     <User className="w-4 h-4" />
                     <span>{article.author}</span>
@@ -244,5 +244,3 @@ const Explore = () => {
 };
 
 export default Explore;
-
-}
