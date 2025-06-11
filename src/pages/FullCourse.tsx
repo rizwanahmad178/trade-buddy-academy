@@ -32,12 +32,12 @@ const FullCourse = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50">
       <Navigation />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Full Course Programs</h1>
-          <p className="text-muted-foreground">Complete trading education with comprehensive curriculum</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Full Course Programs</h1>
+          <p className="text-gray-600">Complete trading education with comprehensive curriculum</p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

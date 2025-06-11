@@ -5,9 +5,9 @@ import { NavigationCards } from "@/components/NavigationCards";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navigation />
-      <div className="bg-gradient-to-b from-blue-50 to-white dark:from-blue-950/20 dark:to-background">
+      <div className="bg-gradient-to-b from-blue-50 to-white">
         <Hero />
         <NavigationCards />
       </div>

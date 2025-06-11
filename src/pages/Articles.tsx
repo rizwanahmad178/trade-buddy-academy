@@ -37,12 +37,12 @@ const Articles = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50">
       <Navigation />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Trading Articles</h1>
-          <p className="text-muted-foreground">Learn from expert insights and trading knowledge</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Trading Articles</h1>
+          <p className="text-gray-600">Learn from expert insights and trading knowledge</p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -51,13 +51,13 @@ const Articles = () => {
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <Badge variant="secondary">{article.category}</Badge>
-                  <span className="text-sm text-muted-foreground">{article.readTime}</span>
+                  <span className="text-sm text-gray-500">{article.readTime}</span>
                 </div>
                 <CardTitle className="text-xl">{article.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">{article.excerpt}</p>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <p className="text-gray-600 mb-4">{article.excerpt}</p>
+                <div className="flex items-center gap-4 text-sm text-gray-500">
                   <div className="flex items-center gap-1">
                     <User className="w-4 h-4" />
                     <span>{article.author}</span>
