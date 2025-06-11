@@ -1,14 +1,16 @@
-
 import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { FilterTabs } from "@/components/FilterTabs";
 import { TraderCard } from "@/components/TraderCard";
+import { MentorProfileModal } from "@/components/MentorProfileModal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User } from "lucide-react";
 
 const Explore = () => {
   const [activeFilter, setActiveFilter] = useState("full-course");
+  const [selectedMentor, setSelectedMentor] = useState(null);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   // Mock data for all content types
   const fullCourseTraders = [
@@ -122,6 +124,11 @@ const Explore = () => {
     }
   ];
 
+  const handleViewProfile = (mentor: any) => {
+    setSelectedMentor(mentor);
+    setIsProfileModalOpen(true);
+  };
+
   const getFilteredContent = () => {
     switch (activeFilter) {
       case "full-course":
@@ -204,7 +211,11 @@ const Explore = () => {
     return (
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {content.map((trader) => (
-          <TraderCard key={trader.id} trader={trader} />
+          <TraderCard 
+            key={trader.id} 
+            trader={trader} 
+            onViewProfile={() => handleViewProfile(trader)}
+          />
         ))}
       </div>
     );
@@ -222,6 +233,12 @@ const Explore = () => {
         
         {renderContent()}
       </div>
+
+      <MentorProfileModal
+        mentor={selectedMentor}
+        isOpen={isProfileModalOpen}
+        onClose={() => setIsProfileModalOpen(false)}
+      />
     </div>
   );
 };

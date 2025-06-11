@@ -17,9 +17,10 @@ interface TraderCardProps {
     experience: string;
     studentsCount: number;
   };
+  onViewProfile?: () => void;
 }
 
-export const TraderCard = ({ trader }: TraderCardProps) => {
+export const TraderCard = ({ trader, onViewProfile }: TraderCardProps) => {
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer">
       <CardContent className="p-6">
@@ -62,7 +63,11 @@ export const TraderCard = ({ trader }: TraderCardProps) => {
         </div>
 
         <div className="flex gap-2">
-          <Button className="flex-1 bg-blue-600 hover:bg-blue-700" size="sm">
+          <Button 
+            className="flex-1 bg-blue-600 hover:bg-blue-700" 
+            size="sm"
+            onClick={onViewProfile}
+          >
             View Profile
           </Button>
           <Button variant="outline" size="sm">
